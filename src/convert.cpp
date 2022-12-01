@@ -1,3 +1,7 @@
+// Arthur Augusto Magalhaes - 202110830
+// Wildes Augusto de Sousa  - 202020602
+// Aaron Martins Leão Ferreira - 202120496
+
 #include "cstring"
 #include "iostream"
 #include "fstream"
