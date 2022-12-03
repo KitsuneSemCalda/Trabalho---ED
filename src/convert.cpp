@@ -4,6 +4,13 @@
 
 using namespace std;
 
+bool Numero(char aux){
+    if (aux >= '0' and aux <= '9'){
+        return true;
+    }
+    return false;
+}
+
 bool Maisculo(char aux){
     if (aux >= 'A' and aux <= 'Z'){
         return true;
@@ -13,8 +20,15 @@ bool Maisculo(char aux){
 
 string auxTreatment(string aux){
     unsigned long tamAux = aux.size();
+    
+    unsigned long counter = tamAux * 2;
+    unsigned long i = 0;
+    do{
+               
+        if (aux[i] == ';' and aux[(i + 1)] == Maisculo(aux[(i + 1)])){
+            aux[i] = '\n';
+        }
 
-    for (unsigned long i = 0; i < tamAux; i++){
         if (aux[i] == ','){
             aux[i] = ';';
         }
@@ -22,14 +36,27 @@ string auxTreatment(string aux){
         if ((aux[i] == ' ') and (aux[(i + 1)] == ' ')){
             aux[i] = aux[(i - 1)];
         }
-        
-        if ((aux[i] == ' ') and (aux[(i + 1)]) == Maisculo(aux[(i + 1)])){
-            aux[i] = '\n';
+
+        if ((aux[i] == ' ') and (aux[(i + 1)]) == ' ' and (aux[(i + 2)]) == ' '){
+            aux[i] = aux[(i + 1)];
+            aux[(i + 1)] = aux[(i + 2)];
         }
-    }
+
+        if ((aux[i]) == Numero(aux[i]) and aux[(i + 1)] == ' '){
+            aux[(i + 1)] = '\n';
+        }
+
+        i++;
+        counter --;
+
+        if ( i == tamAux){
+            i = 0;
+        }
+
+    }while(counter > 0);
     
     aux = (aux + '\n');
-
+    aux = (aux + '\n');
     return aux;
 }
 
