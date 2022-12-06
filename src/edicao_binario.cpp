@@ -4,7 +4,32 @@
 
 using namespace std;
 
+void imprimir(){
+    ifstream arquivoRead("saida.bin", ios::binary| ios::out);
 
+    if (arquivoRead){
+        int arquivoSize = sizeof(arquivoRead);
+
+        char* buffer;
+        buffer = new char[arquivoSize];
+
+        bool fim = arquivoRead.eof();
+
+        while(fim == false){
+            arquivoRead.read(buffer, arquivoSize);
+            
+            if(buffer[arquivoSize] == ';'){
+                cout << endl;
+            }else{
+                cout << buffer << " ";
+            }
+
+            fim = arquivoRead.eof();
+        }
+        
+    }
+
+};
 
 void Menu() {
   int option = 0;
@@ -18,9 +43,25 @@ void Menu() {
       cout << "Opção 6: Sair do programa ." << endl;
     cin>>option;
     switch(option){
-        case 1:
+              case 1:
+            //adicionarElemento();  
             break;
-
+	        
+            case 2:
+            //verEntre();  
+            break;
+        
+            case 3:
+            //alterarDados();  
+            break;
+        
+            case 4:
+            //trocarReg();  
+            break;
+        
+            case 5:
+            imprimir();  
+            break; 
         }
     }
 }

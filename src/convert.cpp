@@ -72,6 +72,34 @@ class Fila{
         }
 };
 
+bool isNumber(char aux){
+    if (aux >= '0' and aux <= '9'){
+        return true;
+    }
+    return false;
+};
+
+bool isLetter(char aux){
+    if ((aux >= 'A' and aux <= 'Z') or ((aux >= 'a') and (aux <= 'z'))){
+        return true;
+    }
+    return false;
+};
+
+string auxTreatment(string aux){
+    int tamAux = aux.size();
+    
+    if (aux[tamAux] == ' '){
+        aux[tamAux] = ';';
+    }
+
+    if (isNumber(aux[tamAux])){
+        aux[(tamAux + 1)] = ';';
+    }
+
+    return aux;
+}
+
 void dd_csv2bin(class Fila ppufla){
 
     // Declaramos o arquivo de leitura como preparatorio2.csv e caso o programa identifique que o arquivo existe ele começa a ler linha a linha do arquivo e o enfileira na nossa estrutura "FILA"
@@ -81,7 +109,8 @@ void dd_csv2bin(class Fila ppufla){
     string aux;
 
     if (arquivoLeitura){
-        while(getline(arquivoLeitura, aux)){
+        while(arquivoLeitura >> aux){
+            aux = auxTreatment(aux);
             ppufla.enfileira(aux);
         }
     }
