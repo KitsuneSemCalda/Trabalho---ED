@@ -3,10 +3,9 @@
 #include "fstream"
 
 using namespace std;
+ifstream arquivoRead("saida.bin", ios::binary| ios::out);
 
 void imprimir(){
-    ifstream arquivoRead("saida.bin", ios::binary| ios::out);
-
     if (arquivoRead){
         int arquivoSize = sizeof(arquivoRead);
 
@@ -42,6 +41,9 @@ void Menu() {
 	  cout << "Opção 5: Imprimir todos os registros ."<< endl;
       cout << "Opção 6: Sair do programa ." << endl;
     cin>>option;
+    if ((option > 5) or (option < 1)){
+      break;
+    }else{
     switch(option){
               case 1:
             //adicionarElemento();  
@@ -61,13 +63,17 @@ void Menu() {
         
             case 5:
             imprimir();  
-            break; 
+            break;
+            
+            default:
+            break;
         }
     }
+  }
 }
 
 int main(){
-    Menu();
-    return 0;
+  Menu();
+  return 0;
 }
 
