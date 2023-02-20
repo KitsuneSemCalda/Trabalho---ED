@@ -28,7 +28,11 @@ int main(){
   }
   
   getline(arq_in, linha);
-
+  
+  // Gerando uma stream a partir da segunda linha do arquivo csv, enquanto o arquivo não chegar ao fim
+  // em seguida geramos uma stringstream onde dividimos o s da stream em colunas onde geramos uma str_list[i] 
+  // em seguida usamos rw_dados para converter corretamente os dados de aux para poder ser escrito no arquivo binário
+  
   while (getline(arq_in, linha) && !arq_in.eof()){
     i = 0;
     stringstream s(linha);
